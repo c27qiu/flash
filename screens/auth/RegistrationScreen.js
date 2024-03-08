@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { StyleSheet, View, ImageBackground, Text, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Image, Alert } from "react-native";
+import { StyleSheet, Platform, View, ImageBackground, Text, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Image, Alert } from "react-native";
 
 import { useDispatch } from 'react-redux';
 
