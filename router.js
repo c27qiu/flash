@@ -107,7 +107,6 @@ export const useRoute = (isAuth) => {
                 backgroundColor: "#FF6C00",
                 alignContent: "center",
                 alignItems: "center",
-                marginTop: 9,
               }}
             >
               <AntDesign
