@@ -9,13 +9,17 @@ import {
   ScrollView,
 } from "react-native";
 
+import { createStackNavigator } from "@react-navigation/stack";
 import { Feather } from "@expo/vector-icons";
 
 import { authSignOutUser } from "../../redux/auth/authOperations";
+import MainBackSide from "./MainBackSide";
+
+const NestedScreen = createStackNavigator();
 
 const GymMapScreen = ({ navigation }) => {
-  const handleButtonPress = () => {
-    // Navigate to a new blank page or perform any other action
+  const handleButtonPress = (screenName) => {
+    navigation.navigate(screenName); // Navigate to the specified screen
   };
 
   const signOut = () => {
@@ -89,11 +93,14 @@ const GymMapScreen = ({ navigation }) => {
         </View>
         <View style={styles.buttonContainer}>
             <ScrollView style={styles.buttonScrollContainer}>
-                <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+                <TouchableOpacity style={styles.button} onPress={() => handleButtonPress("MainBackSide")}>
                     <Text style={styles.buttonText}>Main Boulder Front Side</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
+                <TouchableOpacity style={styles.button} onPress={() => handleButtonPress("MainBackSide")}>
                     <Text style={styles.buttonText}>Main Boulder Back Side</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button} onPress={() => handleButtonPress("MainBackSide")}>
+                    <Text style={styles.buttonText}>Back Boulder</Text>
                 </TouchableOpacity>
                 <View style={{ height: 100 }}></View>
             </ScrollView>

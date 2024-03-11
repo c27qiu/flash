@@ -55,7 +55,7 @@ export default function LoginScreen({ navigation })
           height={height}
           width={width}
           preserveAspectRatio='xMidYWid slice'
-          source={require("../../assets/images/signUp-bg.jpg")}
+          source={require("../../assets/images/signUp-bg.jpeg")}
         >
         <View style={styles.innerBox} height={height / 1.7}>
             <Text style={styles.titleText}>Login</Text>

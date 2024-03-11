@@ -17,7 +17,7 @@ import LoginScreen from "./screens/auth/LoginScreen";
 import ProfileScreen from "./screens/main/ProfileScreen";
 import CreatePostsScreen from "./screens/main/CreatePostsScreen";
 import PostsScreen from "./screens/main/PostsScreen";
-import GymMapScreen from "./screens/main/GymMapScreen";
+import GymScreen from "./screens/main/GymScreen";
 import NotifsScreen from "./screens/main/NotifsScreen";
 
 const AuthStack = createStackNavigator();
@@ -81,8 +81,8 @@ export const useRoute = (isAuth) => {
         })}
       />
       <MainTab.Screen
-        name="GymMapScreen"
-        component={GymMapScreen}
+        name="GymScreen"
+        component={GymScreen}
         options={{
           tabBarIcon: ({ focused, size, color }) => (
             <Ionicons
