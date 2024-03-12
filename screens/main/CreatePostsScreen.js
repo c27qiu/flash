@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { View, Text, StyleSheet, Dimensions, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Button, TouchableOpacity, ImageBackground, Alert } from "react-native";
+import { View, Text, StyleSheet, Dimensions, TextInput, Platform, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Button, TouchableOpacity, ImageBackground, Alert } from "react-native";
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 import { useDispatch, useSelector } from "react-redux";
