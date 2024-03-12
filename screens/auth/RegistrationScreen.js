@@ -133,7 +133,7 @@ export default function RegistrationScreen({ navigation })
           height={height}
           width={width}
           preserveAspectRatio='xMidYWid slice'
-          source={require("../../assets/images/signUp-bg.jpg")}
+          source={require("../../assets/images/signUp-bg.jpeg")}
         >
         <View style={styles.innerBox} height={height / 1.55}>
             {profileImage ?
