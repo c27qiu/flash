@@ -1,45 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button } from 'react-native';
 
 const Websocket = () => {
-	const [message, setMessage] = useState(null);
+	const [isWebSocketConnected, setIsWebSocketConnected] = useState(false);
+	const [socket, setSocket] = useState(null);
 
-	useEffect(() => {
-		const ws = new WebSocket('ws://127.0.0.1:8000/ws/12');
+	const handleConnectButtonClick = () => {
+		if (!isWebSocketConnected) {
+			const newSocket = new WebSocket('ws://127.0.0.1:8000/ws/12');
 
-		ws.onopen = () => {
-			console.log('WebSocket connection opened');
-			// connection opened
-			ws.send('something'); // send a message
-		};
+			newSocket.addEventListener('open', (event) => {
+				console.log('WebSocket Connection Opened:', event);
+				setServerState('WebSocket Connection Opened');
+				setIsWebSocketConnected(true);
+			});
 
-		ws.onmessage = (e) => {
-			// a message was received
-			console.log('got message', e.data);
-			const data = JSON.parse(e.data);
-			setMessage(data);
-		};
+			newSocket.addEventListener('message', (event) => {
+				setServerState('Disconnected. Check internet or server.');
+				console.log('Received Message:', event.data);
+			});
 
-		ws.onerror = (e) => {
-			// an error occurred
-			console.log('websocket error ', e.message);
-		};
+			newSocket.addEventListener('close', (event) => {
+				console.log('WebSocket Connection Closed:', event);
+				setIsWebSocketConnected(false);
+			});
 
-		ws.onclose = (e) => {
-			// connection closed
-			console.log('connection closed ', e.code, e.reason);
-		};
-
-		return () => {
-			ws.close();
-		};
-	}, []);
+			setSocket(newSocket);
+		} else {
+			// Close the WebSocket connection if already open
+			socket.close();
+			setIsWebSocketConnected(false);
+			setSocket(null);
+		}
+	};
 
 	return (
 		<View>
-			<Text>WebSocket Component</Text>
-			{/* Add your UI components here */}
-			<View>{message && <Text>{JSON.stringify(message)}</Text>}</View>
+			<Text>Your React Native Component</Text>
+			<Button
+				title={
+					isWebSocketConnected
+						? 'Disconnect WebSocket'
+						: 'Connect WebSocket'
+				}
+				onPress={handleConnectButtonClick}
+			/>
+			{/* Your component's content */}
 		</View>
 	);
 };
