@@ -1,31 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	View,
 	Text,
 	StyleSheet,
 	Image,
-	TouchableOpacity,
 	SafeAreaView,
+	Button,
+	Alert,
+	ScrollView,
 } from 'react-native';
 import Notification from '../../components/Notification';
-import Websocket from '../../components/Websocket';
+import Web from '../../components/Web';
+import Modal from 'react-native-modal';
+// import AlertComponent from '../../components/AlertComponent';
 
 const NotifsScreen = ({ navigation }) => {
-	const handleButtonPress = () => {
-		// Navigate to a new blank page or perform any other action
+	const [isModalVisible, setModalVisible] = useState(false);
+	const [notifications, setNotifications] = useState([]);
+
+	const toggleModal = () => {
+		setModalVisible(!isModalVisible);
+	};
+
+	const handleApproveButtonPress = () => {
+		// Create a new notification and add it to the notifications state
+		const newNotification = (
+			<Notification
+				key={notifications.length}
+				title='Training Cave Wall A'
+				date='1d ago'
+				details='Update to wall has been approved! View to see the change.'
+			/>
+		);
+		setNotifications([...notifications, newNotification]);
+		toggleModal();
 	};
 
 	return (
 		<View style={styles.container}>
-			<SafeAreaView>
-				<Websocket />
-			</SafeAreaView>
+			<View style={styles.modalcontainer}>
+				<Button title='Open Modal' onPress={toggleModal} />
+				<Modal isVisible={isModalVisible}>
+					<View style={styles.modalContainer}>
+						<Image
+							source={require('../../assets/images/GymMap.png')}
+							style={styles.image}
+							resizeMode='cover'
+						/>
+						<View style={styles.buttonContainer}>
+							<Button
+								title='Approve'
+								onPress={handleApproveButtonPress}
+							/>
+							<Button title='Reject' onPress={toggleModal} />
+						</View>
+					</View>
+				</Modal>
+			</View>
+			{/* <SafeAreaView>
+				<Web />
+			</SafeAreaView> */}
 			<View style={styles.mapContainer}></View>
 			<View style={styles.buttonContainer}>
-				<TouchableOpacity
-					style={styles.button}
-					onPress={handleButtonPress}
-				>
+				<ScrollView>
+					{notifications.map((notification, index) => (
+						// Render the notifications conditionally based on the notifications state
+						<View key={index}>{notification}</View>
+					))}
 					<Notification
 						title='Training Cave Wall A'
 						date='1d ago'
@@ -46,13 +87,22 @@ const NotifsScreen = ({ navigation }) => {
 						date='1d ago'
 						details='Update to wall has been approved! View to see the change.'
 					/>
+					{/* <Notification
+						title='Training Cave Wall A'
+						date='1d ago'
+						details='Update to wall has been approved! View to see the change.'
+					/>
 					<Notification
 						title='Training Cave Wall A'
 						date='1d ago'
 						details='Update to wall has been approved! View to see the change.'
 					/>
-				</TouchableOpacity>
-				{/* Add more buttons as needed */}
+					<Notification
+						title='Training Cave Wall A'
+						date='1d ago'
+						details='Update to wall has been approved! View to see the change.'
+					/> */}
+				</ScrollView>
 			</View>
 		</View>
 	);
@@ -62,6 +112,29 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: '#FFFFFF',
+	},
+	modalcontainer: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	modalContainer: {
+		backgroundColor: 'white',
+		padding: 20,
+		borderRadius: 10,
+		width: '80%', // Adjust the width as needed
+		alignSelf: 'center',
+	},
+	image: {
+		width: '100%',
+		height: 200, // Adjust the height as needed
+		borderRadius: 10,
+		marginBottom: 10,
+	},
+	buttonContainer: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		// marginBottom: 10,
 	},
 });
 

@@ -7,7 +7,7 @@ const Websocket = () => {
 
 	const handleConnectButtonClick = () => {
 		if (!isWebSocketConnected) {
-			const newSocket = new WebSocket('ws://127.0.0.1:8000/ws/12');
+			const newSocket = new WebSocket('ws://172.20.10.5:8000/ws/12');
 
 			newSocket.addEventListener('open', (event) => {
 				console.log('WebSocket Connection Opened:', event);
