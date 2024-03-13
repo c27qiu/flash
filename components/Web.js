@@ -14,7 +14,9 @@ export default function Web() {
 	const [disableButton, setDisableButton] = React.useState(true);
 	const [inputFieldEmpty, setInputFieldEmpty] = React.useState(true);
 	const [serverMessages, setServerMessages] = React.useState([]);
-	var ws = React.useRef(new WebSocket('ws://172.20.10.5:8000/ws/12')).current;
+	var ws = React.useRef(
+		new WebSocket('ws://172.20.10.5:8000/wse/111')
+	).current;
 
 	React.useEffect(() => {
 		const serverMessagesList = [];
@@ -57,13 +59,16 @@ export default function Web() {
 					flexGrow: 1,
 				}}
 			>
-				<ScrollView>
+				{serverMessages.map((item, ind) => {
+					return <Text key={ind}>{item}</Text>;
+				})}
+				{/* <ScrollView>
 					{serverMessages.map((item, ind) => {
 						return <Text key={ind}>{item}</Text>;
 					})}
-				</ScrollView>
+				</ScrollView> */}
 			</View>
-			<View
+			{/* <View
 				style={{
 					flexDirection: 'row',
 				}}
@@ -87,7 +92,7 @@ export default function Web() {
 					title={'Submit'}
 					disabled={disableButton || inputFieldEmpty}
 				/>
-			</View>
+			</View> */}
 		</View>
 	);
 }

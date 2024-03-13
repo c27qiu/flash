@@ -4,7 +4,7 @@ import { Logs } from 'expo';
 
 // Logs.enableExpoCliLogging();
 
-const Notification = ({ title, date, details }) => {
+const Notification = ({ wallName, title, date, details }) => {
 	return (
 		<TouchableOpacity style={styles.button}>
 			<View style={styles.container}>

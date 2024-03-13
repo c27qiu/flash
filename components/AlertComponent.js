@@ -17,7 +17,7 @@ const AlertComponent = () => {
 				<View style={styles.modalContainer}>
 					{/* Image component */}
 					<Image
-						source={require('../assets/images/GymMap.png')}
+						source={require('../assets/images/GymMap.jpg')}
 						style={styles.image}
 						resizeMode='cover'
 					/>

@@ -10,13 +10,15 @@ import {
 	ScrollView,
 } from 'react-native';
 import Notification from '../../components/Notification';
-import Web from '../../components/Web';
+import Wee from '../../components/Wee';
 import Modal from 'react-native-modal';
 // import AlertComponent from '../../components/AlertComponent';
 
 const NotifsScreen = ({ navigation }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [notifications, setNotifications] = useState([]);
+	const imageUrl = require('../../assets/images/GymMap.jpg');
+	const wallName = 'MainBackSide';
 
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
@@ -26,6 +28,7 @@ const NotifsScreen = ({ navigation }) => {
 		// Create a new notification and add it to the notifications state
 		const newNotification = (
 			<Notification
+				wallName='MainBackSide'
 				key={notifications.length}
 				title='Training Cave Wall A'
 				date='1d ago'
@@ -33,6 +36,7 @@ const NotifsScreen = ({ navigation }) => {
 			/>
 		);
 		setNotifications([...notifications, newNotification]);
+		navigation.navigate('GymMapScreen', { imageUrl, wallName });
 		toggleModal();
 	};
 
@@ -43,7 +47,7 @@ const NotifsScreen = ({ navigation }) => {
 				<Modal isVisible={isModalVisible}>
 					<View style={styles.modalContainer}>
 						<Image
-							source={require('../../assets/images/GymMap.png')}
+							source={imageUrl}
 							style={styles.image}
 							resizeMode='cover'
 						/>
@@ -58,7 +62,7 @@ const NotifsScreen = ({ navigation }) => {
 				</Modal>
 			</View>
 			{/* <SafeAreaView>
-				<Web />
+				<Wee />
 			</SafeAreaView> */}
 			<View style={styles.mapContainer}></View>
 			<View style={styles.buttonContainer}>
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
 	image: {
 		width: '100%',
 		height: 200, // Adjust the height as needed
-		borderRadius: 10,
+		borderRadius: 5,
 		marginBottom: 10,
 	},
 	buttonContainer: {
