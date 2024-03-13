@@ -3,6 +3,7 @@ import { moduleName } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import GymMapScreen from "../nestedScreen/GymMapScreen";
 import MainBackSide from "../nestedScreen/MainBackSide";
+import DummyIntImageTest from "../nestedScreen/DUMMYSCREEN";
 
 const NestedScreenGym = createStackNavigator();
 
@@ -11,7 +12,7 @@ const GymScreen = () => {
     <NestedScreenGym.Navigator>
       <NestedScreenGym.Screen
         name="HomeGymMap"
-        component={GymMapScreen}
+        component={DummyIntImageTest}
         options={{
           headerShown: false,
         }}

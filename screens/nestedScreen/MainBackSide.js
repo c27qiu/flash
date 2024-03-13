@@ -36,15 +36,27 @@ const MainBackSide = ({ navigation }) => {
   };
 
   // Define a map of letter grades to colors
-  const gradeColorMap = {
-    red: "red",
-    yellow: "yellow",
-    orange: "orange",
-    blue: "blue",
-    green: "green",
-    purple: "purple",
-    black: "black"
+  const gradeColorMap = { //darker colours
+    red: "#E74C3C",
+    yellow: "#F1C40F",
+    pink: "#F10FDD",
+    orange: "#E67E22",
+    blue: "#3498DB",
+    green: "#2ECC71",
+    purple: "#8E44AD",
+    black: "#2C3E50"
   };
+
+  // const gradeColorMap = { //lighter colours
+  //   red: "#EC7063",
+  //   yellow: "#F4D03F",
+  //   pink: "#EC63EA",
+  //   orange: "#EB984E",
+  //   blue: "#5DADE2",
+  //   green: "#52BE80",
+  //   purple: "#AF7AC5",
+  //   black: "#2C3E50"
+  // };
 
   // Function to render buttons for each grade
   const renderGradeButtons = () => {
