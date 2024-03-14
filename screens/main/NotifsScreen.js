@@ -21,6 +21,7 @@ const NotifsScreen = ({ navigation }) => {
 	const [serverState, setServerState] = useState('Loading...');
 	const [wallName, setWallName] = useState('');
 	const [imageUri, setImageUri] = useState('');
+	const [dateOfChange, setDate] = useState('');
 
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
@@ -28,7 +29,7 @@ const NotifsScreen = ({ navigation }) => {
 
 	useEffect(() => {
 		const ws = new WebSocket(
-			'ws://ec2-18-218-31-105.us-east-2.compute.amazonaws.com:8000/wse/2839'
+			'ws://ec2-18-218-31-105.us-east-2.compute.amazonaws.com:8080/wse/2839'
 		);
 
 		ws.onopen = () => {
@@ -37,10 +38,17 @@ const NotifsScreen = ({ navigation }) => {
 
 		ws.onmessage = (event) => {
 			const receivedData = JSON.parse(event.data);
-			const { wall_name: wallNameFromData, image_path: imagePath } =
+			const { wall_name: wallNameFromData, image_path: imagePath, date_modified: date } =
 				receivedData;
 
 			setWallName(wallNameFromData);
+
+			// Parse the datetime string into a Date object
+			const parsedDate = new Date(date);
+			// Format the date into "Month Day Year" format
+			const options = { month: 'long', day: '2-digit', year: 'numeric' };
+			const formattedDate = parsedDate.toLocaleDateString('en-US', options);
+			setDate(formattedDate)
 
 			const bucketName = 'fydp-photos';
 			const imageUrl = `https://${bucketName}.s3.us-east-2.amazonaws.com/${imagePath}`;
@@ -105,11 +113,7 @@ const NotifsScreen = ({ navigation }) => {
 		const newNotification = (
 			<Notification
 				style={{ marginTop: 5 }}
-				// TODO Maria: change name to what is passed from S3
-				// title should be what wall name is but with spaces separated
-				// date should be the time... we need that from S3
-				// details...
-				wallName='MainBackSide'
+				wallName={wallName}
 				key={notifications.length}
 				title='Arch I/J/K/L'
 				date='1m ago'
@@ -117,11 +121,15 @@ const NotifsScreen = ({ navigation }) => {
 			/>
 		);
 
-		toggleModal();
 		setNotifications([...notifications, newNotification]);
 
 		// TODO Maria: update with image path from S3
-		navigation.navigate('GymMapScreen', { imageUrl, wallName });
+		navigation.navigate(wallName, {
+			imagePath: imageUri,
+			dateOfImage: dateOfChange
+		});
+		//, dateOfImage: dateOfChange
+		toggleModal();
 	};
 
 	return (
@@ -148,6 +156,7 @@ const NotifsScreen = ({ navigation }) => {
 								style={styles.image}
 								resizeMode='cover'
 							/>
+							<Text>{dateOfChange}</Text>
 							<View style={styles.buttonContainer}>
 								<Button
 									title='Approve'

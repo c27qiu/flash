@@ -19,7 +19,7 @@ const NestedScreen = createStackNavigator();
 
 const GymMapScreen = ({ navigation }) => {
 	const handleButtonPress = (screenName) => {
-		navigation.navigate(screenName, { imageSource: newImageSource }); // Navigate to the specified screen
+		navigation.navigate(screenName);
 	};
 
 	const signOut = () => {

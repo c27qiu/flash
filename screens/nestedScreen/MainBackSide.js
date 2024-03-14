@@ -13,8 +13,11 @@ import { Feather } from '@expo/vector-icons';
 import { authSignOutUser } from '../../redux/auth/authOperations';
 import MainBackSideImage from '../../assets/images/MainBackSide.jpg';
 
-const MainBackSide = ({ route }) => {
-	const { imageSource } = route.params;
+const MainBackSide = ({ navigation, route }) => {
+
+  const [imageSource, getImageSource] = useState(null);
+  const [ImageTime, getImageTime] = useState(null);
+	// const testpls = route?.params?.imagePath || "Current Problems";
 	const [imageWidth, setImageWidth] = useState(null);
 	const [imageHeight, setImageHeight] = useState(null);
 
@@ -30,6 +33,17 @@ const MainBackSide = ({ route }) => {
 		};
 
 		calculateImageSize();
+
+    // TODO: have a more dynamic way of getting this image. perhaps by always setting a "current" image
+    getImageSource(
+      route?.params?.imagePath || 
+      "https://fydp-photos.s3.us-east-2.amazonaws.com/raw-pi-photos/Feb29-11PM.jpg"
+    )
+    getImageTime(
+      route?.params?.dateOfImage ||
+      "February 29, 2024"
+    )
+
 	}, []);
 
 	const signOut = () => {
@@ -102,13 +116,13 @@ const MainBackSide = ({ route }) => {
 			<View style={styles.imageContainer}>
 				{imageWidth && imageHeight && (
 					<Image
-						source={imageSource || MainBackSideImage}
+						source={{uri: imageSource}}
 						style={{ width: imageWidth, height: imageHeight }}
 					/>
 				)}
 			</View>
 			<View style={styles.dateContainer}>
-				<Text>Last Updated: February 29 2024</Text>
+				<Text>Last Updated: {ImageTime}</Text>
 			</View>
 			<View style={styles.subtitleContainer}>
 				<Text style={styles.subtitle}>Current Problems</Text>

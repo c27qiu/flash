@@ -3,6 +3,7 @@ import { moduleName } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import GymMapScreen from "../nestedScreen/GymMapScreen";
 import MainBackSide from "../nestedScreen/MainBackSide";
+import NotifsScreen from "./NotifsScreen";
 
 const NestedScreenGym = createStackNavigator();
 
@@ -23,7 +24,15 @@ const GymScreen = () => {
           headerShown: false,
         }}
       />
+      <NestedScreenGym.Screen
+        name="NotifsScreen"
+        component={NotifsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </NestedScreenGym.Navigator>
+    
   );
 };
 
