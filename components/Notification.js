@@ -1,8 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Logs } from 'expo';
-
-// Logs.enableExpoCliLogging();
 
 const Notification = ({ wallName, title, date, details }) => {
 	return (

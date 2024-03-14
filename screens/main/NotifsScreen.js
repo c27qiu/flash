@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	View,
 	Text,
@@ -10,103 +10,154 @@ import {
 	ScrollView,
 } from 'react-native';
 import Notification from '../../components/Notification';
-import Wee from '../../components/Wee';
 import Modal from 'react-native-modal';
-// import AlertComponent from '../../components/AlertComponent';
 
 const NotifsScreen = ({ navigation }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
 	const [notifications, setNotifications] = useState([]);
-	const imageUrl = require('../../assets/images/GymMap.jpg');
-	const wallName = 'MainBackSide';
+	// const wallName = 'MainBackSide';
+
+	// const [serverMessages, setServerMessages] = useState([]);
+	const [serverState, setServerState] = useState('Loading...');
+	const [wallName, setWallName] = useState('');
+	const [imageUri, setImageUri] = useState('');
 
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
 	};
 
+	useEffect(() => {
+		const ws = new WebSocket(
+			'ws://ec2-18-218-31-105.us-east-2.compute.amazonaws.com:8000/wse/2839'
+		);
+
+		ws.onopen = () => {
+			setServerState('Connected to server');
+		};
+
+		ws.onmessage = (event) => {
+			const receivedData = JSON.parse(event.data);
+			const { wall_name: wallNameFromData, image_path: imagePath } =
+				receivedData;
+
+			setWallName(wallNameFromData);
+
+			const bucketName = 'fydp-photos';
+			const imageUrl = `https://${bucketName}.s3.us-east-2.amazonaws.com/${imagePath}`;
+			setImageUri(imageUrl);
+			setModalVisible(true);
+
+			// setServerMessages((prevMessages) => [...prevMessages, imageUrl]);
+		};
+
+		ws.onclose = () => {
+			setServerState('Disconnected from server');
+		};
+
+		ws.onerror = (error) => {
+			setServerState('WebSocket error: ', error);
+		};
+
+		return () => {
+			ws.close();
+		};
+	}, []);
+
+	const hardcode_notifications = [
+		{
+			title: 'Arch I/J/K/L',
+			date: '5h ago',
+			details:
+				'Update to wall has been approved! View to see the change.',
+		},
+		{
+			title: 'Training Cave Wall A',
+			date: '2d ago',
+			details:
+				'Update to wall has been approved! View to see the change.',
+		},
+		{
+			title: 'Cave D/E',
+			date: '4d ago',
+			details:
+				'Update to wall has been approved! View to see the change.',
+		},
+		{
+			title: 'Kids Area C',
+			date: '1w ago',
+			details:
+				'Update to wall has been approved! View to see the change.',
+		},
+	];
+
+	const notificationComponents = hardcode_notifications.map(
+		(notification, index) => (
+			<Notification
+				key={index}
+				title={notification.title}
+				date={notification.date}
+				details={notification.details}
+			/>
+		)
+	);
+
 	const handleApproveButtonPress = () => {
-		// Create a new notification and add it to the notifications state
 		const newNotification = (
 			<Notification
+				style={{ marginTop: 5 }}
+				// TODO Maria: change name to what is passed from S3
+				// title should be what wall name is but with spaces separated
+				// date should be the time... we need that from S3
+				// details...
 				wallName='MainBackSide'
 				key={notifications.length}
-				title='Training Cave Wall A'
-				date='1d ago'
+				title='Arch I/J/K/L'
+				date='1m ago'
 				details='Update to wall has been approved! View to see the change.'
 			/>
 		);
-		setNotifications([...notifications, newNotification]);
-		navigation.navigate('GymMapScreen', { imageUrl, wallName });
+
 		toggleModal();
+		setNotifications([...notifications, newNotification]);
+
+		// TODO Maria: update with image path from S3
+		navigation.navigate('GymMapScreen', { imageUrl, wallName });
 	};
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.modalcontainer}>
-				<Button title='Open Modal' onPress={toggleModal} />
-				<Modal isVisible={isModalVisible}>
-					<View style={styles.modalContainer}>
-						<Image
-							source={imageUrl}
-							style={styles.image}
-							resizeMode='cover'
-						/>
-						<View style={styles.buttonContainer}>
-							<Button
-								title='Approve'
-								onPress={handleApproveButtonPress}
-							/>
-							<Button title='Reject' onPress={toggleModal} />
-						</View>
-					</View>
-				</Modal>
-			</View>
-			{/* <SafeAreaView>
-				<Wee />
-			</SafeAreaView> */}
-			<View style={styles.mapContainer}></View>
 			<View style={styles.buttonContainer}>
 				<ScrollView>
 					{notifications.map((notification, index) => (
 						// Render the notifications conditionally based on the notifications state
 						<View key={index}>{notification}</View>
 					))}
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					{/* <Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/>
-					<Notification
-						title='Training Cave Wall A'
-						date='1d ago'
-						details='Update to wall has been approved! View to see the change.'
-					/> */}
+					{notificationComponents}
 				</ScrollView>
+				<View style={styles.modalcontainer}>
+					<Modal
+						animationType='slide'
+						isVisible={isModalVisible}
+						onRequestClose={() => {
+							setModalVisible(!isModalVisible);
+						}}
+					>
+						<View style={styles.modalContainer}>
+							<Image
+								source={{ uri: imageUri }}
+								style={styles.image}
+								resizeMode='cover'
+							/>
+							<View style={styles.buttonContainer}>
+								<Button
+									title='Approve'
+									onPress={handleApproveButtonPress}
+								/>
+								<Button title='Reject' onPress={toggleModal} />
+							</View>
+						</View>
+					</Modal>
+				</View>
 			</View>
 		</View>
 	);
