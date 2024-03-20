@@ -15,8 +15,8 @@ import MainBackSideImage from '../../assets/images/MainBackSide.jpg';
 
 const MainBackSide = ({ navigation, route }) => {
 
-  const [imageSource, getImageSource] = useState(null);
-  const [ImageTime, getImageTime] = useState(null);
+	const [imageSource, getImageSource] = useState(null);
+	const [ImageTime, getImageTime] = useState(null);
 	// const testpls = route?.params?.imagePath || "Current Problems";
 	const [imageWidth, setImageWidth] = useState(null);
 	const [imageHeight, setImageHeight] = useState(null);

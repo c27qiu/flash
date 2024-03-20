@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
 	View,
 	Text,
@@ -13,11 +13,22 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Feather } from '@expo/vector-icons';
 
 import { authSignOutUser } from '../../redux/auth/authOperations';
-import MainBackSide from './MainBackSide';
 
-const NestedScreen = createStackNavigator();
+const GymMapScreen = ({ navigation, route }) => {
 
-const GymMapScreen = ({ navigation }) => {
+	const words = "Select a wall to view current problems!"
+
+	useEffect(() => {
+		const { fromNotifsPage, wallScreenToShow, imagePath, dateOfImage } = route.params || {};
+
+		if (fromNotifsPage) {
+			navigation.navigate(wallScreenToShow, {
+				imagePath: imagePath,
+				dateOfImage: dateOfImage
+			});
+		}
+	  }, [route.params]);
+
 	const handleButtonPress = (screenName) => {
 		navigation.navigate(screenName);
 	};
@@ -87,7 +98,7 @@ const GymMapScreen = ({ navigation }) => {
 								paddingTop: 10,
 							}}
 						>
-							Select a wall to view current problems!
+							{words}
 						</Text>
 					</View>
 				</View>
