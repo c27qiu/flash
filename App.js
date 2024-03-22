@@ -11,8 +11,9 @@ import { store } from "./redux/store";
 function App()
 {
   const [fontsLoaded] = Font.useFonts({
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Rubik-Regular": require("./assets/fonts/Rubik-Regular.ttf"),
+    "Rubik-Light": require("./assets/fonts/Rubik-Light.ttf"),
+    "Rubik-Medium": require("./assets/fonts/Rubik-Medium.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {

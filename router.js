@@ -112,7 +112,7 @@ export const useRoute = (isAuth) => {
               <AntDesign
                 name="plus"
                 size={16}
-                color="#FFFFFF"
+                color="#FFEFDB"
                 style={{ marginVertical: 12 }}
               />
             </View>

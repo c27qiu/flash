@@ -14,7 +14,6 @@ import { authSignOutUser } from '../../redux/auth/authOperations';
 import MainBackSideImage from '../../assets/images/MainBackSide.jpg';
 
 const MainBackSide = ({ navigation, route }) => {
-
 	const [imageSource, getImageSource] = useState(null);
 	const [ImageTime, getImageTime] = useState(null);
 	// const testpls = route?.params?.imagePath || "Current Problems";
@@ -34,16 +33,12 @@ const MainBackSide = ({ navigation, route }) => {
 
 		calculateImageSize();
 
-    // TODO: have a more dynamic way of getting this image. perhaps by always setting a "current" image
-    getImageSource(
-      route?.params?.imagePath || 
-      "https://fydp-photos.s3.us-east-2.amazonaws.com/raw-pi-photos/Feb29-11PM.jpg"
-    )
-    getImageTime(
-      route?.params?.dateOfImage ||
-      "February 29, 2024"
-    )
-
+		// TODO: have a more dynamic way of getting this image. perhaps by always setting a "current" image
+		getImageSource(
+			route?.params?.imagePath ||
+				'https://fydp-photos.s3.us-east-2.amazonaws.com/raw-pi-photos/Feb29-11PM.jpg'
+		);
+		getImageTime(route?.params?.dateOfImage || 'February 29, 2024');
 	}, []);
 
 	const signOut = () => {
@@ -86,14 +81,14 @@ const MainBackSide = ({ navigation, route }) => {
 					height: 30,
 					borderBottomColor: '#0000004D',
 					borderWidth: 0.5,
-					borderColor: '#ffffff',
+					borderColor: '#FFEFDB',
 					flexDirection: 'row',
 					alignItems: 'center',
 				}}
 			>
 				<Text
 					style={{
-						fontFamily: 'Roboto-Medium',
+						fontFamily: 'Rubik-Medium',
 						fontSize: 17,
 						lineHeight: 22,
 						color: '#212121',
@@ -116,7 +111,7 @@ const MainBackSide = ({ navigation, route }) => {
 			<View style={styles.imageContainer}>
 				{imageWidth && imageHeight && (
 					<Image
-						source={{uri: imageSource}}
+						source={{ uri: imageSource }}
 						style={{ width: imageWidth, height: imageHeight }}
 					/>
 				)}
@@ -143,7 +138,7 @@ const MainBackSide = ({ navigation, route }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFFFFF',
+		backgroundColor: '#FFEFDB',
 	},
 	header: {
 		height: 30,
@@ -154,7 +149,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	title: {
-		fontFamily: 'Roboto-Medium',
+		fontFamily: 'Rubik-Medium',
 		fontSize: 17,
 		lineHeight: 22,
 		color: '#212121',
@@ -172,7 +167,7 @@ const styles = StyleSheet.create({
 		marginRight: '5%',
 	},
 	pageTitle: {
-		fontFamily: 'Roboto-Medium',
+		fontFamily: 'Rubik-Medium',
 		fontSize: 17,
 		lineHeight: 35,
 		color: '#212121',
@@ -202,7 +197,7 @@ const styles = StyleSheet.create({
 		// backgroundColor: "blue"
 	},
 	subtitle: {
-		fontFamily: 'Roboto-Medium',
+		fontFamily: 'Rubik-Medium',
 		fontSize: 16,
 		lineHeight: 35,
 		color: '#212121',
