@@ -13,6 +13,7 @@ function App()
   const [fontsLoaded] = Font.useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
+    "Epilogue-SemiBold": require("./assets/fonts/Epilogue-SemiBold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
