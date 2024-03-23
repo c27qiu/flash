@@ -155,44 +155,7 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     height: "100%",
-    // backgroundColor: "red",
   },
-  // buttonScrollContainer: {
-  // 	flexGrow: 1,
-  // 	marginBottom: 88,
-  // },
-  // mapImage: {
-  // 	flex: 1, // Take up all available space within mapContainer
-  // 	width: "100%", // Reset width to override resizeMode="contain"
-  // 	height: "100%", // Reset height to override resizeMode="contain"
-  // },
-  // instructionsContainer: {
-  // 	position: 'absolute',
-  // 	top: '40%', // Adjust the distance from the bottom as needed
-  // 	height: '8%',
-  // },
-  // buttonContainer: {
-  // 	position: 'absolute',
-  // 	top: '48%',
-  // 	height: '100%',
-  // 	left: 0,
-  // 	right: 0,
-  // 	alignItems: 'center',
-  // 	paddingBottom: 150,
-  // 	//   backgroundColor: "#E5E5E5", // Background color
-  // },
-  // button: {
-  // 	backgroundColor: '#FF6C00',
-  // 	paddingVertical: 10,
-  // 	paddingHorizontal: 20,
-  // 	borderRadius: 8,
-  // 	marginBottom: 10, // Added to create space between buttons
-  // },
-  // buttonText: {
-  // 	fontFamily: 'Roboto-Medium',
-  // 	fontSize: 16,
-  // 	color: '#FFFFFF',
-  // },
 });
 
 export default GymMapScreen;
