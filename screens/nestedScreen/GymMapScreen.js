@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-  Dimensions,
 } from "react-native";
 
 import { Feather, FontAwesome } from "@expo/vector-icons";
