@@ -51,11 +51,11 @@ export const useRoute = (isAuth) => {
           shadowColor: "#0000004D",
           shadowOpacity: 0.5,
         },
-      }}
-      tabBarStyle={{
-        style: {
+        tabBarStyle:{
+          height: 65,
           justifyContent: "center",
-        },
+          backgroundColor: "#FADEBC"
+        }
       }}
     >
       <MainTab.Screen
@@ -64,9 +64,9 @@ export const useRoute = (isAuth) => {
         options={({ route }) => ({
           tabBarIcon: ({ focused, size, color }) => (
             <Ionicons
-              name="grid-outline"
+              name="home-outline"
               size={size}
-              color="#212121CC"
+              color="#272B3E"
             />
           ),
           headerRight: () => (
@@ -86,9 +86,9 @@ export const useRoute = (isAuth) => {
         options={{
           tabBarIcon: ({ focused, size, color }) => (
             <Ionicons
-              name="home-outline"
+              name="grid-outline"
               size={size}
-              color="#212121CC"
+              color="#272B3E"
             />
           ),
           headerShown: false,
@@ -104,7 +104,7 @@ export const useRoute = (isAuth) => {
                 width: 70,
                 height: 40,
                 borderRadius: 20,
-                backgroundColor: "#FF6C00",
+                backgroundColor: "#272B3E",
                 alignContent: "center",
                 alignItems: "center",
               }}
@@ -133,7 +133,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="notifications-outline"
               size={size}
-              color="#212121CC"
+              color="#272B3E"
             />
           ),
           headerShown: false,
@@ -147,7 +147,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="person-outline"
               size={size}
-              color="#212121CC"
+              color="#272B3E"
             />
           ),
           headerShown: false,
