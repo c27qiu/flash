@@ -51,11 +51,10 @@ export const useRoute = (isAuth) => {
           shadowColor: "#0000004D",
           shadowOpacity: 0.5,
         },
-      }}
-      tabBarStyle={{
-        style: {
+        tabBarStyle:{
           justifyContent: "center",
-        },
+          backgroundColor: "#FADEBC"
+        }
       }}
     >
       <MainTab.Screen
