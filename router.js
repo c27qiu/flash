@@ -54,7 +54,23 @@ export const useRoute = (isAuth) => {
         tabBarStyle:{
           height: 65,
           justifyContent: "center",
-          backgroundColor: "#FADEBC"
+          backgroundColor: "#FFEED9",
+          opacity: 0.9,
+          borderTopRightRadius: 34, // This sets the border radius of the tab bar
+          borderTopLeftRadius: 34,
+          // shadowColor: "#0000004D", // This sets the color of the shadow
+          // shadowOpacity: 0.9, // This sets the opacity of the shadow
+          // shadowOffset: { width: 0, height: 50 }, // This sets the offset of the shadow
+          // shadowRadius: 20, // This sets the blur radius of the shadow
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+          elevation: 24,
+          // elevation: 50, // This adds shadow on Android
+          position: 'absolute',
         }
       }}
     >
@@ -74,7 +90,7 @@ export const useRoute = (isAuth) => {
               style={{ marginRight: 16, bottom: 4 }}
               onPress={() => dispatch(authSignOutUser())}
             >
-              <Feather name="log-out" size={24} color="#BDBDBD" />
+              <Feather name="log-out" size={24} color="#FFEFDB" />
             </TouchableOpacity>
           ),
           headerShown: false,
