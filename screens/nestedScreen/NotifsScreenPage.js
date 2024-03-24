@@ -101,15 +101,17 @@ const NotifsScreenPage = ({ navigation }) => {
 	const notificationComponents = hardcode_notifications.map(
 		(notification, index) => (
 			<Notification
-				key={index}
 				title={notification.title}
 				date={notification.date}
 				details={notification.details}
+				index={index}
 			/>
 		)
 	);
 
 	const handleApproveButtonPress = () => {
+		const index = notifications.length;
+
 		const newNotification = (
 			<Notification
 				style={{ marginTop: 5 }}
@@ -118,6 +120,7 @@ const NotifsScreenPage = ({ navigation }) => {
 				title='Arch I/J/K/L'
 				date='1m ago'
 				details='Update to wall has been approved! View to see the change.'
+				index={index}
 			/>
 		);
 
@@ -139,13 +142,15 @@ const NotifsScreenPage = ({ navigation }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.buttonContainer}>
-				<ScrollView>
-					{notifications.map((notification, index) => (
-						// Render the notifications conditionally based on the notifications state
-						<View key={index}>{notification}</View>
-					))}
-					{notificationComponents}
-				</ScrollView>
+				<View style={styles.notifications}>
+					<ScrollView>
+						{notifications.map((notification, index) => (
+							// Render the notifications conditionally based on the notifications state
+							<View key={index}>{notification}</View>
+						))}
+						{notificationComponents}
+					</ScrollView>
+				</View>
 				<View style={styles.modalcontainer}>
 					<Modal
 						animationType='slide'
@@ -179,7 +184,11 @@ const NotifsScreenPage = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFEFDB',
+		backgroundColor: '#FDFDF3',
+	},
+	notifications: {
+		marginTop: 75,
+		marginBottom: 20,
 	},
 	modalcontainer: {
 		flex: 1,
@@ -203,6 +212,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		// marginBottom: 10,
+		// marginTop: 10,
 	},
 });
 
