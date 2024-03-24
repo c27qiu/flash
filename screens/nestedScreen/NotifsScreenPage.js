@@ -127,7 +127,11 @@ const NotifsScreenPage = ({ navigation }) => {
 			fromNotifsPage: true,
 			wallScreenToShow: wallName,
 			imagePath: imageUri,
-			dateOfImage: dateOfChange
+			dateOfImage: dateOfChange,
+			grades: {
+				"red": 1,
+				"purple": 1,
+			},
 		});
 		toggleModal();
 	};
