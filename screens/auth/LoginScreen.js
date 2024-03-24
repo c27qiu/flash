@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
 		borderColor: '#E8E8E8',
 	},
 	inputFocused: {
-		borderColor: '#FF6C00',
-		backgroundColor: '#FFEFDB',
+		borderColor: '#4A6253',
+		backgroundColor: '#E5F1DB',
 	},
 	textSecure: {
 		position: 'absolute',
