@@ -156,7 +156,7 @@ export default function RegistrationScreen({ navigation }) {
 							<View
 								style={{
 									...styles.photoBox,
-									backgroundColor: '#F6F6F6',
+									backgroundColor: '#FCFFF5',
 								}}
 							/>
 						)}
@@ -180,13 +180,13 @@ export default function RegistrationScreen({ navigation }) {
 								<View
 									style={{
 										...styles.photoBoxBtn,
-										borderColor: '#FF6C00',
+										borderColor: '#4A6253',
 									}}
 								>
 									<AntDesign
 										name='plus'
 										size={16}
-										color='#FF6C00'
+										color='#4A6253'
 									/>
 								</View>
 							</TouchableOpacity>
@@ -261,15 +261,6 @@ export default function RegistrationScreen({ navigation }) {
 									onFocus={() => onFocus('password')}
 									onBlur={() => onBlur('password')}
 								/>
-								<TouchableOpacity
-									onPress={() =>
-										setSecureEntry((prev) => !prev)
-									}
-								>
-									<Text style={styles.textSecure}>
-										{isSecureEntry ? 'Show' : 'Hide'}
-									</Text>
-								</TouchableOpacity>
 							</View>
 							<View style={styles.btnBox}>
 								<TouchableOpacity
@@ -309,7 +300,7 @@ const styles = StyleSheet.create({
 	innerBox: {
 		position: 'relative',
 		alignItems: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: '#FDFDF3',
 		borderTopRightRadius: 25,
 		borderTopLeftRadius: 25,
 	},
@@ -341,6 +332,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		lineHeight: 35,
 		letterSpacing: 1,
+		color: '#4A6253',
 	},
 	form: {
 		width: '100%',
@@ -373,12 +365,12 @@ const styles = StyleSheet.create({
 		marginTop: 45,
 	},
 	btn: {
-		backgroundColor: '#FF6C00',
+		backgroundColor: '#4A6253',
 		borderRadius: 100,
 	},
 	btnText: {
 		fontFamily: 'Rubik-Regular',
-		color: '#FFEFDB',
+		color: '#fff',
 		fontSize: 16,
 		lineHeight: 19,
 		textAlign: 'center',

@@ -120,7 +120,7 @@ export default function LoginScreen({ navigation }) {
 									onFocus={() => onFocus('password')}
 									onBlur={() => onBlur('password')}
 								/>
-								<TouchableOpacity
+								{/* <TouchableOpacity
 									onPress={() =>
 										setSecureEntry((prev) => !prev)
 									}
@@ -128,7 +128,7 @@ export default function LoginScreen({ navigation }) {
 									<Text style={styles.textSecure}>
 										{isSecureEntry ? 'Show' : 'Hide'}
 									</Text>
-								</TouchableOpacity>
+								</TouchableOpacity> */}
 							</View>
 							<View style={styles.btnBox}>
 								<TouchableOpacity
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
 	innerBox: {
 		position: 'relative',
 		alignItems: 'center',
-		backgroundColor: '#FFEFDB',
+		backgroundColor: '#FDFDF3',
 		borderTopRightRadius: 25,
 		borderTopLeftRadius: 25,
 	},
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 		lineHeight: 35,
 		letterSpacing: 1,
+		color: '#4A6253',
 	},
 	form: {
 		width: '100%',
@@ -211,12 +212,12 @@ const styles = StyleSheet.create({
 		marginTop: Platform.OS == 'ios' ? 45 : 30,
 	},
 	btn: {
-		backgroundColor: '#FF6C00',
+		backgroundColor: '#4A6253',
 		borderRadius: 100,
 	},
 	btnText: {
 		fontFamily: 'Rubik-Regular',
-		color: '#FFEFDB',
+		color: '#FFFFFF',
 		fontSize: 16,
 		lineHeight: 19,
 		textAlign: 'center',
