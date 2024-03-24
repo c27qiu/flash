@@ -75,26 +75,34 @@ const NotifsScreenPage = ({ navigation }) => {
 		{
 			title: 'Arch I/J/K/L',
 			date: '5h ago',
-			details:
-				'Update to wall has been approved! View to see the change.',
+			update:
+				'Update to wall has been rejected!',
+			commonText:
+				' View to see the change.',
 		},
 		{
 			title: 'Training Cave Wall A',
 			date: '2d ago',
-			details:
-				'Update to wall has been approved! View to see the change.',
+			update:
+				'A new change has been detected!',
+			commonText:
+				' View to see the change.',
 		},
 		{
 			title: 'Cave D/E',
 			date: '4d ago',
-			details:
-				'Update to wall has been approved! View to see the change.',
+			update:
+				'Update to wall has been approved!',
+			commonText:
+				 ' View to see the change.',
 		},
 		{
 			title: 'Kids Area C',
 			date: '1w ago',
-			details:
-				'Update to wall has been approved! View to see the change.',
+			update:
+				'A new change has been detected!',
+			commonText:
+				 ' View to see the change.',
 		},
 	];
 
@@ -103,7 +111,8 @@ const NotifsScreenPage = ({ navigation }) => {
 			<Notification
 				title={notification.title}
 				date={notification.date}
-				details={notification.details}
+				update={notification.update}
+				commonText={notification.commonText}
 				index={index}
 			/>
 		)
@@ -119,7 +128,8 @@ const NotifsScreenPage = ({ navigation }) => {
 				key={notifications.length}
 				title='Arch I/J/K/L'
 				date='1m ago'
-				details='Update to wall has been approved! View to see the change.'
+				update='Update to wall has been approved!'
+				commonText=' View to see the change.'
 				index={index}
 			/>
 		);
