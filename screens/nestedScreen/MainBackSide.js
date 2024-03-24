@@ -12,8 +12,6 @@ import {
 import { Feather, FontAwesome } from "@expo/vector-icons";
 import MainBackSideImage from "../../assets/images/MainBackSide.jpg";
 
-import { Shadow } from "react-native-shadow-2";
-
 const MainBackSide = ({ navigation, route }) => {
   const [imageSource, getImageSource] = useState(null);
   const [ImageTime, getImageTime] = useState(null);
@@ -50,9 +48,10 @@ const MainBackSide = ({ navigation, route }) => {
         "https://fydp-photos.s3.us-east-2.amazonaws.com/raw-pi-photos/Feb29-11PM.jpg"
     );
     getImageTime(route?.params?.dateOfImage || "February 29, 2024");
+
     setGradeMapProp(
       route?.params?.grades || defaultGradesCount
-    )
+    );
   }, []);
 
 

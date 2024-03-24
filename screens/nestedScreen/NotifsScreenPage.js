@@ -18,10 +18,22 @@ const NotifsScreenPage = ({ navigation }) => {
 	// const wallName = 'MainBackSide';
 
 	// const [serverMessages, setServerMessages] = useState([]);
+
+
+	const defaultGradesCount = {
+		yellow: 0,
+		green: 0,
+		blue: 0,
+		red: 0,
+		orange: 0,
+		purple: 0,
+		black: 0,
+	};
 	const [serverState, setServerState] = useState('Loading...');
 	const [wallName, setWallName] = useState('');
 	const [imageUri, setImageUri] = useState('');
 	const [dateOfChange, setDate] = useState('');
+	const [gradesDetected, setGradeMapProp] = useState({});
 
 	const toggleModal = () => {
 		setModalVisible(!isModalVisible);
@@ -38,10 +50,11 @@ const NotifsScreenPage = ({ navigation }) => {
 
 		ws.onmessage = (event) => {
 			const receivedData = JSON.parse(event.data);
-			const { wall_name: wallNameFromData, image_path: imagePath, date_modified: date } =
+			const { wall_name: wallNameFromData, image_path: imagePath, date_modified: date, grades: grades } =
 				receivedData;
 
 			setWallName(wallNameFromData);
+			setGradeMapProp(grades);
 
 			// Parse the datetime string into a Date object
 			const parsedDate = new Date(date);
@@ -136,15 +149,21 @@ const NotifsScreenPage = ({ navigation }) => {
 
 		setNotifications([...notifications, newNotification]);
 
+		const gradesDetectedMap = {
+			"yellow": gradesDetected["yellow"] || 1,
+			"green": gradesDetected["green"] || 1,
+			"blue": gradesDetected["blue"] || 0,
+			"red": gradesDetected["red"] || 1,
+			"orange": gradesDetected["orange"] || 0,
+			"purple": gradesDetected["purple"] || 0,
+			"black": gradesDetected["black"] || 1,
+		}
 		navigation.navigate("HomeGymMap", {
 			fromNotifsPage: true,
 			wallScreenToShow: wallName,
 			imagePath: imageUri,
 			dateOfImage: dateOfChange,
-			grades: {
-				"red": 1,
-				"purple": 1,
-			},
+			grades: gradesDetectedMap,
 		});
 		toggleModal();
 	};
@@ -175,7 +194,6 @@ const NotifsScreenPage = ({ navigation }) => {
 								style={styles.image}
 								resizeMode='cover'
 							/>
-							<Text>{dateOfChange}</Text>
 							<View style={styles.buttonContainer}>
 								<Button
 									title='Approve'

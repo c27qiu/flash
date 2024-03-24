@@ -22,13 +22,14 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 const GymMapScreen = ({ navigation, route }) => {
   // handling props from navigation page
   useEffect(() => {
-    const { fromNotifsPage, wallScreenToShow, imagePath, dateOfImage } =
+    const { fromNotifsPage, wallScreenToShow, imagePath, dateOfImage, grades } =
       route.params || {};
 
     if (fromNotifsPage) {
       navigation.navigate(wallScreenToShow, {
         imagePath: imagePath,
         dateOfImage: dateOfImage,
+        grades: grades,
       });
     }
   }, [route.params]);
