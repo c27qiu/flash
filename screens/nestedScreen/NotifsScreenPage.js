@@ -179,7 +179,7 @@ const NotifsScreenPage = ({ navigation }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFFFFF',
+		backgroundColor: '#FFEFDB',
 	},
 	modalcontainer: {
 		flex: 1,

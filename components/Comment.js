@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   message: {
-    fontFamily: "Roboto-Regular",
+    fontFamily: "Rubik-Regular",
     lineHeight: 18,
     fontSize: 13,
     color: '#212121',
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   date: {
     marginTop: 8,
     marginLeft: "auto",
-    fontFamily: "Roboto-Regular",
+    fontFamily: "Rubik-Regular",
     fontSize: 10,
     color: "#BDBDBD",
   },
