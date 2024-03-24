@@ -162,7 +162,6 @@ export const PublicPosts = ({ item, navigation }) => {
 						</TouchableOpacity>
 					</View>
 				</View>
-				<View style={styles.line} />
 			</View>
 		</View>
 	);
@@ -242,10 +241,5 @@ const styles = StyleSheet.create({
 		fontWeight: 400,
 		fontSize: 16,
 		lineHeight: 19,
-	},
-	line: {
-		borderBottomColor: '#CDB8A5',
-		borderBottomWidth: 1,
-		marginTop: 14,
 	},
 });

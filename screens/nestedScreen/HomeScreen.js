@@ -65,9 +65,6 @@ const HomeScreen = ({ navigation, route }) => {
 				<View
 					style={{
 						height: 30,
-						// borderBottomColor: '#0000004D',
-						// borderWidth: 0.5,
-						// borderColor: '#ffffff',
 						flexDirection: 'row',
 						alignItems: 'center',
 					}}
@@ -81,12 +78,6 @@ const HomeScreen = ({ navigation, route }) => {
 							marginLeft: '45%',
 						}}
 					></Text>
-					{/* <TouchableOpacity
-						onPress={signOut}
-						style={{ marginLeft: '38%', bottom: 3 }}
-					>
-						<Feather name='log-out' size={24} color='#BDBDBD' />
-					</TouchableOpacity> */}
 				</View>
 				<View style={{ marginHorizontal: 16 }}>
 					<FlatList
@@ -105,7 +96,7 @@ const HomeScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFEFDB',
+		backgroundColor: '#FFE5C4',
 	},
 	innerBox: {
 		marginVertical: 32,
