@@ -83,35 +83,44 @@ const NotifsScreenPage = ({ navigation }) => {
 			ws.close();
 		};
 	}, []);
+	
 
 	const hardcode_notifications = [
 		{
-			title: 'Arch I/J/K/L',
-			date: '5h ago',
-			update:
-				'Update to wall has been rejected!',
-			commonText:
-				' View to see the change.',
-		},
-		{
-			title: 'Training Cave Wall A',
-			date: '2d ago',
+			title: 'Island Wall',
+			date: '13m ago',
 			update:
 				'A new change has been detected!',
 			commonText:
 				' View to see the change.',
 		},
 		{
-			title: 'Cave D/E',
-			date: '4d ago',
+			title: 'Lead Alcove',
+			date: '23m ago',
+			update:
+				'Update to wall has been rejected!',
+			commonText:
+				' View to see the change.',
+		},
+		{
+			title: 'Lead Alcove',
+			date: '23m ago',
+			update:
+				'A new change has been detected!',
+			commonText:
+				' View to see the change.',
+		},
+		{
+			title: 'Back Boulder',
+			date: '1h ago',
 			update:
 				'Update to wall has been approved!',
 			commonText:
 				 ' View to see the change.',
 		},
 		{
-			title: 'Kids Area C',
-			date: '1w ago',
+			title: 'Back Boulder',
+			date: '1h ago',
 			update:
 				'A new change has been detected!',
 			commonText:
@@ -126,10 +135,14 @@ const NotifsScreenPage = ({ navigation }) => {
 				date={notification.date}
 				update={notification.update}
 				commonText={notification.commonText}
-				index={index}
+				index={index+1}
 			/>
 		)
 	);
+
+	const addSpacesToCamelCase = (str) => {
+		return str.replace(/([a-z])([A-Z])/g, '$1 $2');
+	};
 
 	const handleApproveButtonPress = () => {
 		const index = notifications.length;
@@ -139,7 +152,7 @@ const NotifsScreenPage = ({ navigation }) => {
 				style={{ marginTop: 5 }}
 				wallName={wallName}
 				key={notifications.length}
-				title='Arch I/J/K/L'
+				title={addSpacesToCamelCase(wallName)}
 				date='1m ago'
 				update='Update to wall has been approved!'
 				commonText=' View to see the change.'
@@ -168,12 +181,32 @@ const NotifsScreenPage = ({ navigation }) => {
 		toggleModal();
 	};
 
+	const handleRejectButtonPress = () => {
+		const index = notifications.length;
+
+		const newNotification = (
+			<Notification
+				style={{ marginTop: 5 }}
+				wallName={wallName}
+				key={notifications.length}
+				title={addSpacesToCamelCase(wallName)}
+				date='1m ago'
+				update='Update to wall has been rejected!'
+				commonText=' View to see the change.'
+				index={index}
+			/>
+		);
+
+		setNotifications([...notifications, newNotification]);
+		toggleModal();
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.buttonContainer}>
 				<View style={styles.notifications}>
 					<ScrollView>
-						{notifications.map((notification, index) => (
+						{[...notifications].reverse().map((notification, index) => (
 							// Render the notifications conditionally based on the notifications state
 							<View key={index}>{notification}</View>
 						))}
@@ -199,7 +232,7 @@ const NotifsScreenPage = ({ navigation }) => {
 									title='Approve'
 									onPress={handleApproveButtonPress}
 								/>
-								<Button title='Reject' onPress={toggleModal} />
+								<Button title='Reject' onPress={handleRejectButtonPress} />
 							</View>
 						</View>
 					</Modal>
@@ -216,7 +249,7 @@ const styles = StyleSheet.create({
 	},
 	notifications: {
 		marginTop: 75,
-		marginBottom: 20,
+		marginBottom: 75,
 	},
 	modalcontainer: {
 		flex: 1,
