@@ -163,13 +163,13 @@ const NotifsScreenPage = ({ navigation }) => {
 		setNotifications([...notifications, newNotification]);
 
 		const gradesDetectedMap = {
-			"yellow": gradesDetected["yellow"] || 1,
-			"green": gradesDetected["green"] || 1,
+			"yellow": gradesDetected["yellow"] || 0,
+			"green": gradesDetected["green"] || 0,
 			"blue": gradesDetected["blue"] || 0,
-			"red": gradesDetected["red"] || 1,
+			"red": gradesDetected["red"] || 0,
 			"orange": gradesDetected["orange"] || 0,
 			"purple": gradesDetected["purple"] || 0,
-			"black": gradesDetected["black"] || 1,
+			"black": gradesDetected["black"] || 0,
 		}
 		navigation.navigate("HomeGymMap", {
 			fromNotifsPage: true,
