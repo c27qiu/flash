@@ -52,16 +52,12 @@ export const useRoute = (isAuth) => {
           shadowOpacity: 0.5,
         },
         tabBarStyle:{
-          height: 65,
+          height: 80,
           justifyContent: "center",
-          backgroundColor: "#FFEED9",
-          opacity: 0.9,
-          borderTopRightRadius: 34, // This sets the border radius of the tab bar
+          backgroundColor: "#ECEFE0",
+          opacity: 0.96,
+          borderTopRightRadius: 34,
           borderTopLeftRadius: 34,
-          // shadowColor: "#0000004D", // This sets the color of the shadow
-          // shadowOpacity: 0.9, // This sets the opacity of the shadow
-          // shadowOffset: { width: 0, height: 50 }, // This sets the offset of the shadow
-          // shadowRadius: 20, // This sets the blur radius of the shadow
           shadowOffset: {
             width: 0,
             height: 12,
@@ -69,8 +65,8 @@ export const useRoute = (isAuth) => {
           shadowOpacity: 0.58,
           shadowRadius: 16.0,
           elevation: 24,
-          // elevation: 50, // This adds shadow on Android
           position: 'absolute',
+          paddingVertical: 20
         }
       }}
     >
@@ -82,7 +78,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="home-outline"
               size={size}
-              color="#272B3E"
+              color="#4A6253"
             />
           ),
           headerRight: () => (
@@ -104,7 +100,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="grid-outline"
               size={size}
-              color="#272B3E"
+              color="#4A6253"
             />
           ),
           headerShown: false,
@@ -119,8 +115,8 @@ export const useRoute = (isAuth) => {
               style={{
                 width: 70,
                 height: 40,
-                borderRadius: 20,
-                backgroundColor: "#272B3E",
+                borderRadius: 30,
+                backgroundColor: "#4A6253",
                 alignContent: "center",
                 alignItems: "center",
               }}
@@ -128,7 +124,7 @@ export const useRoute = (isAuth) => {
               <AntDesign
                 name="plus"
                 size={16}
-                color="#FFEFDB"
+                color="#fff"
                 style={{ marginVertical: 12 }}
               />
             </View>
@@ -149,7 +145,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="notifications-outline"
               size={size}
-              color="#272B3E"
+              color="#4A6253"
             />
           ),
           headerShown: false,
@@ -163,7 +159,7 @@ export const useRoute = (isAuth) => {
             <Ionicons
               name="person-outline"
               size={size}
-              color="#272B3E"
+              color="#4A6253"
             />
           ),
           headerShown: false,

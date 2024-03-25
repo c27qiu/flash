@@ -96,7 +96,7 @@ const HomeScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFE5C4',
+		backgroundColor: '#FDFDF3',
 	},
 	innerBox: {
 		marginVertical: 32,

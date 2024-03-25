@@ -174,7 +174,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#FFEFDB',
+		backgroundColor: '#FDFDF3',
 	},
 	image: {
 		flex: 1,

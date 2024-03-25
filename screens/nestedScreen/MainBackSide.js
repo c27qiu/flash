@@ -90,7 +90,7 @@ const MainBackSide = ({ navigation, route }) => {
           style={[
             styles.row,
             { 
-              backgroundColor: index % 2 === 0 ? "#FFF2E3" : "#FFECD5",
+              backgroundColor: index % 2 === 0 ? "#FCFFF5" : "#F3F8E7",
               borderTopLeftRadius: isTopRow ? 8 : 0,
               borderTopRightRadius: isTopRow ? 8 : 0,
               borderBottomLeftRadius: isBottomRow ? 8 : 0,
@@ -115,13 +115,13 @@ const MainBackSide = ({ navigation, route }) => {
           flexDirection: "row",
           justifyContent: "left",
           alignItems: "flex-end",
-          backgroundColor: "#FFE5C4",
+          backgroundColor: "#FDFDF3",
         }}
       >
         <Feather
           name="map-pin"
           size={22}
-          color="#573926"
+          color="#3C3C3C"
           marginLeft={"5%"}
           marginBottom={"5%"}
         />
@@ -130,7 +130,7 @@ const MainBackSide = ({ navigation, route }) => {
             fontFamily: "Epilogue-SemiBold",
             fontSize: 18,
             lineHeight: 22,
-            color: "#573926",
+            color: "#3C3C3C",
             letterSpacing: -0.408,
             marginLeft: "2%",
             marginBottom: "5%",
@@ -182,7 +182,8 @@ const MainBackSide = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFE5C4",
+    backgroundColor: "#FDFDF3",
+    paddingBottom: 70,
   },
   header: {
     height: 30,
@@ -198,9 +199,8 @@ const styles = StyleSheet.create({
     fontFamily: "Epilogue-Medium",
     fontSize: 16,
     lineHeight: 35,
-    color: "#371B34",
+    color: "#3C3C3C",
     marginLeft: "8%",
-    paddingTop: 10,
   },
   image: {
     borderRadius: 8,
@@ -227,7 +227,8 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: "#707070",
-    fontFamily: "Rubik-Regular",
+    fontFamily: "Rubik-Light",
+    fontSize: 11,
   },
   subtitleContainer: {
     marginRight: "5%",
@@ -239,7 +240,7 @@ const styles = StyleSheet.create({
     fontFamily: "Epilogue-Medium",
     fontSize: 16,
     lineHeight: 35,
-    color: "#371B34",
+    color: "#3C3C3C",
     marginLeft: "8%",
   },
   gradeButtonsContainer: {
@@ -263,7 +264,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#FFF2E3",
+    backgroundColor: "#FCFFF5",
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
     height: "7.5%",
@@ -287,7 +288,8 @@ const styles = StyleSheet.create({
   header: {
     fontFamily: "Epilogue-Medium",
     fontWeight: "bold",
-    marginLeft:  "4%"
+    marginLeft:  "4%",
+    color: '#3C3C3C',
   },
 });
 

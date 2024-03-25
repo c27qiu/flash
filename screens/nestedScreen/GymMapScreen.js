@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import { Feather, FontAwesome } from "@expo/vector-icons";
 
@@ -50,13 +45,13 @@ const GymMapScreen = ({ navigation, route }) => {
           flexDirection: "row",
           justifyContent: "left",
           alignItems: "flex-end",
-          backgroundColor: "#FFE5C4",
+          backgroundColor: "#FDFDF3",
         }}
       >
         <Feather
           name="map-pin"
           size={22}
-          color="#573926"
+          color="#3C3C3C"
           marginLeft={"5%"}
           marginBottom={"5%"}
         />
@@ -65,7 +60,7 @@ const GymMapScreen = ({ navigation, route }) => {
             fontFamily: "Epilogue-SemiBold",
             fontSize: 18,
             lineHeight: 22,
-            color: "#573926",
+            color: "#3C3C3C",
             letterSpacing: -0.408,
             marginLeft: "2%",
             marginBottom: "5%",
@@ -74,72 +69,197 @@ const GymMapScreen = ({ navigation, route }) => {
           Guelph Grotto Climbing Gym
         </Text>
         {/* <TouchableOpacity
-					onPress={signOut}
-					style={{ marginLeft: '15%', bottom: 3 }}
-				>
-					<Feather name='log-out' size={24} color='#573926' />
-				</TouchableOpacity> */}
+            onPress={signOut}
+            style={{ marginLeft: '15%', bottom: 3 }}
+          >
+            <Feather name='log-out' size={24} color='#3C3C3C' />
+          </TouchableOpacity> */}
       </View>
-      <View style={styles.mapContainer}>
-        {/* Height: 844, Width: 390 */}
-        <LeadAlcove style={{ position: "absolute", left: "5%", top: "2%" }} />
-		<TouchableOpacity style={{ position: "absolute", left: "23%", top: "10%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "79%", top: "10%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "75%", top: "2%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "26%", top: "2%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
+      <View
+        style={{
+          backgroundColor: "#FCFFF5",
+          marginBottom: 20,
+          justifyContent: "center",
+          paddingHorizontal: 20,
+          borderRadius: 25,
+          shadowColor: "#000",
+          shadowOffset: { width: 2.3, height: 2.3 },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          paddingBottom: 35,
+          height: 620,
+          marginHorizontal: 20,
+        }}
+      >
+        <View style={styles.mapContainer}>
+          {/* Height: 844, Width: 390 */}
+          <LeadAlcove style={{ position: "absolute", left: "5%", top: "2%" }} />
+          <TouchableOpacity
+            style={{ position: "absolute", left: "23%", top: "10%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "79%", top: "10%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "75%", top: "2%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "26%", top: "2%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
 
-		<MainBoulder style={{ position: "absolute", left: "18%", top: "25%"}}/>
-		<TouchableOpacity 
-			style={{ position: "absolute", left: "60%", top: "37%"}}
-			onPress={() => handleButtonPress('MainBackSide')}
-		>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "25%", top: "26%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "25%", top: "36%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "56%", top: "25%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
+          <MainBoulder
+            style={{ position: "absolute", left: "18%", top: "25%" }}
+          />
+          <TouchableOpacity
+            style={{ position: "absolute", left: "60%", top: "37%" }}
+            onPress={() => handleButtonPress("MainBackSide")}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "25%", top: "26%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "25%", top: "36%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "56%", top: "25%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
 
-        <BackBoulder style={{ position: "absolute", left: "5%", top: "35%" }} />
-		<TouchableOpacity style={{ position: "absolute", left: "19%", top: "42%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
+          <BackBoulder
+            style={{ position: "absolute", left: "5%", top: "35%" }}
+          />
+          <TouchableOpacity
+            style={{ position: "absolute", left: "19%", top: "42%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
 
-        <FrontDesk style={{ position: "absolute", left: "80%", top: "50%" }} />
+          <FrontDesk
+            style={{ position: "absolute", left: "80%", top: "50%" }}
+          />
 
-        <KilterBoard style={{ position: "absolute", left: "5%", top: "15%" }} />
-		<TouchableOpacity style={{ position: "absolute", left: "15%", top: "18%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
+          <KilterBoard
+            style={{ position: "absolute", left: "5%", top: "15%" }}
+          />
+          <TouchableOpacity
+            style={{ position: "absolute", left: "15%", top: "18%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
 
-        <AerialSilk style={{ position: "absolute", left: "5%", top: "53%" }} />
+          <AerialSilk
+            style={{ position: "absolute", left: "5%", top: "53%" }}
+          />
 
-        <ProgramAlley style={{ position: "absolute", left: "15%", top: "65%" }}/>
-		<TouchableOpacity style={{ position: "absolute", left: "30%", top: "70%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "65%", top: "70%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "20%", top: "75%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
-		<TouchableOpacity style={{ position: "absolute", left: "78%", top: "74%"}}>
-			<FontAwesome name="circle" size={22} color={"#272B3E"} opacity={0.76}/>
-		</TouchableOpacity>
+          <ProgramAlley
+            style={{ position: "absolute", left: "15%", top: "65%" }}
+          />
+          <TouchableOpacity
+            style={{ position: "absolute", left: "30%", top: "70%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "65%", top: "70%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "20%", top: "75%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ position: "absolute", left: "78%", top: "74%" }}
+          >
+            <FontAwesome
+              name="circle"
+              size={22}
+              color={"#4A6253"}
+              opacity={0.76}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -148,7 +268,7 @@ const GymMapScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFE5C4",
+    backgroundColor: "#FDFDF3",
   },
   mapContainer: {
     height: "100%",

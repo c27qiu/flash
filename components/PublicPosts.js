@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 export const PublicPosts = ({ item, navigation }) => {
 	const userNickname = useSelector((state) => state.auth.nickname);
 	const [post, setPost] = useState(null);
-	const [likeCounter, setLikeCounter] = useState('#573926');
+	const [likeCounter, setLikeCounter] = useState('#3C3C3C');
 
 	const dispatch = useDispatch();
 	const {
@@ -29,7 +29,7 @@ export const PublicPosts = ({ item, navigation }) => {
 		if (likes?.includes(userNickname)) {
 			setLikeCounter('#FF6C00');
 		} else {
-			setLikeCounter('#573926');
+			setLikeCounter('#3C3C3C');
 		}
 		const unsub = onSnapshot(doc(db, 'posts', id), (doc) => {
 			setPost(doc.data());
@@ -62,11 +62,17 @@ export const PublicPosts = ({ item, navigation }) => {
 		}
 	};
 	return (
+		<View style={{marginTop: 15, paddingHorizontal: 7}}>
 		<View
 			style={{
-				backgroundColor: '#FFEFDB',
-				marginBottom: 20,
+				backgroundColor: '#FCFFF5',
+				marginBottom: 6,
 				justifyContent: 'center',
+				borderRadius: 25,
+				shadowColor: '#000',
+				shadowOffset: { width: 2.3, height: 2.3 },
+				shadowOpacity: 0.25,
+				shadowRadius: 3.84,
 			}}
 		>
 			{navigation.getState().index === 0 && (
@@ -101,19 +107,19 @@ export const PublicPosts = ({ item, navigation }) => {
 						<EvilIcons
 							name='comment'
 							size={24}
-							color={comments > 0 ? '#FF6C00' : '#573926'}
+							color={comments > 0 ? '#FF6C00' : '#3C3C3C'}
 						/>
 						<Text
 							style={
 								comments === 0
 									? {
 											...styles.spanValue,
-											color: '#573926',
+											color: '#3C3C3C',
 											fontSize: 12,
 									  }
 									: {
 											...styles.spanValue,
-											color: '#573926',
+											color: '#3C3C3C',
 											fontSize: 12,
 									  }
 							}
@@ -129,7 +135,7 @@ export const PublicPosts = ({ item, navigation }) => {
 							style={styles.spanLikeIcon}
 							name='like2'
 							size={18}
-							color={likes?.length > 0 ? '#FF6C00' : '#573926'}
+							color={likes?.length > 0 ? '#FF6C00' : '#3C3C3C'}
 							onPress={like}
 						/>
 						<Text
@@ -137,12 +143,12 @@ export const PublicPosts = ({ item, navigation }) => {
 								likes?.length === 0
 									? {
 											...styles.spanValue,
-											color: '#573926',
+											color: '#3C3C3C',
 											fontSize: 12,
 									  }
 									: {
 											...styles.spanValue,
-											color: '#573926',
+											color: '#3C3C3C',
 											fontSize: 12,
 									  }
 							}
@@ -151,7 +157,7 @@ export const PublicPosts = ({ item, navigation }) => {
 						</Text>
 					</TouchableOpacity>
 					<View style={styles.spanBoxLocation}>
-						<EvilIcons name='location' size={24} color='#573926' />
+						<EvilIcons name='location' size={24} color='#3C3C3C' />
 						<TouchableOpacity
 							activeOpacity={0.8}
 							onPress={() =>
@@ -164,6 +170,7 @@ export const PublicPosts = ({ item, navigation }) => {
 				</View>
 			</View>
 		</View>
+		</View>
 	);
 };
 
@@ -172,13 +179,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		// backgroundColor: '#FCFFF5',
 	},
 	userInformation: {
 		flexDirection: 'row',
 		justifyContent: 'space-between', // Spacing between children
 		width: '100%', // Ensure full width
-		paddingHorizontal: 10, // Add horizontal padding
+		paddingHorizontal: 17, // Add horizontal padding
 		marginBottom: 14,
+		marginTop: 17,
 	},
 	userName: {
 		// marginLeft: 10,
@@ -197,22 +206,23 @@ const styles = StyleSheet.create({
 		marginTop: 5,
 		borderRadius: 8,
 		width: 343,
-		height: 240,
+		height: 230,
 	},
 	title: {
 		marginTop: 9,
 		fontFamily: 'Rubik-Regular',
 		fontSize: 13,
 		lineHeight: 19,
-		color: '#573926',
+		color: '#3C3C3C',
 	},
 	uploadPost: {
-		paddingRight: 10,
-		paddingLeft: 10,
+		paddingRight: 17,
+		paddingLeft: 17,
 	},
 	informationBox: {
 		marginTop: 12,
 		flexDirection: 'row',
+		marginBottom: 17,
 	},
 	spanBox: {
 		flexDirection: 'row',
@@ -233,7 +243,7 @@ const styles = StyleSheet.create({
 		lineHeight: 20,
 		textAlign: 'right',
 		textDecorationLine: 'underline',
-		color: '#573926',
+		color: '#3C3C3C',
 	},
 	spanValue: {
 		marginLeft: 5,
