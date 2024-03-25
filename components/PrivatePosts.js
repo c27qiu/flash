@@ -11,7 +11,7 @@ export const PrivatePosts = ({ item, navigation }) => {
 	const userNickname = useSelector((state) => state.auth.nickname);
 	const [post, setPost] = useState(null);
 	const dispatch = useDispatch();
-	const [likeCounter, setLikeCounter] = useState('#BDBDBD');
+	const [likeCounter, setLikeCounter] = useState('#3c3c3c');
 
 	const {
 		photo,
@@ -29,7 +29,7 @@ export const PrivatePosts = ({ item, navigation }) => {
 		if (likes?.includes(userNickname)) {
 			setLikeCounter('#FF6C00');
 		} else {
-			setLikeCounter('#BDBDBD');
+			setLikeCounter('#3C3C3C');
 		}
 		const unsub = onSnapshot(doc(db, 'posts', id), (doc) => {
 			setPost(doc.data());
@@ -50,8 +50,8 @@ export const PrivatePosts = ({ item, navigation }) => {
 			await updateDoc(postRef, {
 				likes: filteredLikes,
 			});
-			setLikeCounter('#BDBDBD');
-			dispatch(getOwnPosts());
+			setLikeCounter('#FF6C00');
+			dispatch(getAllPosts());
 		} else {
 			await updateDoc(postRef, {
 				likes: [...post.likes, userNickname],
@@ -61,7 +61,7 @@ export const PrivatePosts = ({ item, navigation }) => {
 		}
 	};
 	return (
-		<View style={{ marginBottom: 20, justifyContent: 'center' }}>
+		<View style={{ marginBottom: 100, justifyContent: 'center' }}>
 			<Image
 				source={{
 					uri: photo,
@@ -77,7 +77,7 @@ export const PrivatePosts = ({ item, navigation }) => {
 						navigation.navigate('Comments', { photo, id })
 					}
 				>
-					<EvilIcons name='comment' size={24} color='#BDBDBD' />
+					<EvilIcons name='comment' size={24} color='#3c3c3c' />
 					<Text style={styles.spanValue}>{comments}</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.spanBox} activeOpacity={0.8}>
@@ -91,7 +91,7 @@ export const PrivatePosts = ({ item, navigation }) => {
 					<Text style={styles.spanValue}>{likes?.length}</Text>
 				</TouchableOpacity>
 				<View style={styles.spanBoxLocation}>
-					<EvilIcons name='location' size={24} color='#BDBDBD' />
+					<EvilIcons name='location' size={24} color='#3c3c3c' />
 					<TouchableOpacity
 						activeOpacity={0.8}
 						onPress={() =>
@@ -137,10 +137,10 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		marginTop: 8,
-		fontFamily: 'Rubik-Medium',
-		fontSize: 16,
+		fontFamily: 'Rubik-Light',
+		fontSize: 13,
 		lineHeight: 19,
-		color: '#212121',
+		color: '#3C3C3C',
 	},
 	informationBox: {
 		marginTop: 12,
@@ -159,20 +159,20 @@ const styles = StyleSheet.create({
 	},
 	location: {
 		alignItems: 'flex-end',
-		fontFamily: 'Rubik-Regular',
+		fontFamily: 'Rubik-Light',
 		fontWeight: 400,
-		fontSize: 14,
+		fontSize: 12,
 		lineHeight: 19,
 		textAlign: 'right',
 		textDecorationLine: 'underline',
-		color: '#212121',
+		color: '#3c3c3c',
 	},
 	spanValue: {
 		marginLeft: 5,
-		fontFamily: 'Rubik-Regular',
+		fontFamily: 'Rubik-Light',
 		fontWeight: 400,
-		fontSize: 16,
+		fontSize: 12,
 		lineHeight: 19,
-		// color: '#BDBDBD',
+		color: '#3c3c3c',
 	},
 });

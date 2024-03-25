@@ -84,7 +84,7 @@ const ProfileScreen = ({ navigation }) => {
 				height={height}
 				width={width}
 				preserveAspectRatio='xMidYWid slice'
-				source={require('../../assets/images/signUp-bg.jpg')}
+				source={require('../../assets/images/signUp-bg.jpeg')}
 			>
 				<View style={styles.innerBox} height={height / 1.35}>
 					{userPhoto ? (
@@ -100,7 +100,7 @@ const ProfileScreen = ({ navigation }) => {
 						<View
 							style={{
 								...styles.photoBox,
-								backgroundColor: '#F6F6F6',
+								backgroundColor: '#F3F8E7',
 							}}
 						/>
 					)}
@@ -138,7 +138,7 @@ const ProfileScreen = ({ navigation }) => {
 					<TouchableOpacity onPress={signOut}>
 						<Feather
 							name='log-out'
-							size={24}
+							size={20}
 							color='#BDBDBD'
 							style={{
 								position: 'absolute',
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'Rubik-Medium',
 		fontSize: 30,
 		lineHeight: 35.16,
-		color: '#212121',
+		color: '#4A6253',
 		textAlign: 'center',
 	},
 	photoBox: {
