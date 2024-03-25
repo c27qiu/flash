@@ -221,7 +221,7 @@ const NotifsScreenPage = ({ navigation }) => {
 							setModalVisible(!isModalVisible);
 						}}
 					>
-						<View style={styles.modalContainer}>
+						<View style={[styles.modalContainer, { backgroundColor: '#F3F8E7' }]}>
 							<Image
 								source={{ uri: imageUri }}
 								style={styles.image}
@@ -231,8 +231,13 @@ const NotifsScreenPage = ({ navigation }) => {
 								<Button
 									title='Approve'
 									onPress={handleApproveButtonPress}
+									color='#4A6253'
 								/>
-								<Button title='Reject' onPress={handleRejectButtonPress} />
+								<Button 
+									title='Reject' 
+									onPress={handleRejectButtonPress} 
+									color='#4A6253'
+								/>
 							</View>
 						</View>
 					</Modal>
